@@ -12,6 +12,7 @@ class UserActions
       puts "Enter password" 
       password = gets.chomp 
       if password == climber.password
+        @logged_in_user= climber
         UserActions.main_menu
       else 
         puts "Try again" 
@@ -21,6 +22,7 @@ class UserActions
       puts "Climber does not exist"
       UserActions.start_page
     end
+    
   end  
 
   def self.start_page 
@@ -77,7 +79,7 @@ class UserActions
     elsif choice == "2"
       view_climbers_by_name
     elsif choice == "3"
-      
+      view_climbers_by_location
     elsif choice == "4"
       find_climbers_by_gear
     elsif choice == "5"
@@ -97,6 +99,10 @@ class UserActions
     puts "Location: #{@logged_in_user.location}"
     puts "Email: #{@logged_in_user.email}"
     puts "Phone Number: #{@logged_in_user.phone_number}"
+    puts "Mountians Climbed" 
+      @logged_in_user.mountains.map do |mountain|
+        puts "   #{mountain.name}"
+      end
     puts ""
     puts "1  -  Back to Main Menu"
     puts "2  -  Update Information"
@@ -207,13 +213,18 @@ class UserActions
   end
 
   def self.find_climbers_by_gear
+    puts ""
     puts "What gear are you looking for?"
+    puts ""
     gear = gets.chomp
     list_of_gear = []
     list_of_gear << Gear.find_by(name:gear)
+    puts ""
     puts "The following climbers have #{gear}"
-    list_of_gear.each do |info|
-      print "Sick! #{info.name}, have it! Call him at #{info.phone_number} or shoot him an email at #{info.email}."
+    puts ""
+    list_of_gear.map do |gear_info|
+      print "Sick! #{gear_info.climber.name}, have it! Call him at #{gear_info.climber.phone_number} or shoot him an email at #{gear_info.climber.email}"
+      puts ""
     end  
     puts ""
     puts "View more? y/n"
@@ -221,5 +232,35 @@ class UserActions
     puts ""
     main_menu
   end  
+
+  def self.view_climbers_by_location
+    puts "Please enter the city"
+    choice = gets.chomp
+    climbers_in_location=Climber.select do |climber|
+      climber.location == choice
+    end
+    climbers_in_location.map do |climber|
+      puts climber.name
+    end
+    if climbers_in_location == nil
+      puts "Not A Vaild City"
+    else
+    end
+    puts "1  -  Main Menu"
+    puts "2  -  View Climber Profile"
+    puts "3  -  View Climbers By Different Location"
+    choice = gets.chomp
+    if choice == "1"
+      main_menu
+    elsif choice == "2"
+      view_climber_profile
+    elsif choice == "3"
+      view_climbers_by_location
+    else
+      main_menu
+    end
+  end
+
+
 
 end
