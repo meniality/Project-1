@@ -12,6 +12,7 @@ class UserActions
       puts "Enter password" 
       password = gets.chomp 
       if password == climber.password
+        @logged_in_user= climber
         UserActions.main_menu
       else 
         puts "Try again" 
@@ -77,7 +78,7 @@ class UserActions
     elsif choice == "2"
       view_climbers_by_name
     elsif choice == "3"
-      
+      view_climbers_by_location
     elsif choice == "4"
       find_climbers_by_gear
     elsif choice == "5"
@@ -219,5 +220,42 @@ class UserActions
     input = gets.chomp
     main_menu
   end  
+
+  def self.view_climbers_by_location
+    puts "Please enter the city"
+    choice = gets.chomp
+    climbers_in_location=Climber.select do |climber|
+      climber.location == choice
+    end
+    climbers_in_location.map do |climber|
+      puts climber.name
+    end
+    if climbers_in_location == nil
+      puts "Not A Vaild City"
+    else
+    end
+    puts "1  -  Main Menu"
+    puts "2  -  View Climber Profile"
+    puts "3  -  View Climbers By Different Location"
+    choice = gets.chomp
+    if choice == "1"
+      main_menu
+    elsif choice == "2"
+      view_climber_profile
+    elsif choice == "3"
+      view_climbers_by_location
+    else
+      main_menu
+    end
+  end
+
+
+
+
+
+
+
+
+
 
 end
