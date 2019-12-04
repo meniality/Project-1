@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_032217) do
   end
 
   create_table "gears", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.integer "climber_id"
     t.index ["climber_id"], name: "index_gears_on_climber_id"
   end
