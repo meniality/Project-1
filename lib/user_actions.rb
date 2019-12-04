@@ -13,7 +13,6 @@ class UserActions
       password = gets.chomp 
       if password == climber.password
         @logged_in_user= climber
-        binding.pry
         UserActions.main_menu
       else 
         puts "Try again" 
@@ -73,7 +72,8 @@ class UserActions
     puts "2  -  View All Climbers By Name"
     puts "3  -  View Climbers By Location"
     puts "4  -  Search Gear"
-    puts "5  -  Logout"
+    puts "5  -  View Mountains By Name"
+    puts "6  -  Logout"
     choice = gets.chomp
     if choice == "1"
       your_profile
@@ -84,6 +84,8 @@ class UserActions
     elsif choice == "4"
       find_climbers_by_gear
     elsif choice == "5"
+      view_mountains_by_name
+    elsif choice == "6"
       @logged_in_user = ""
       start_page
     else
@@ -205,13 +207,16 @@ class UserActions
     puts ""
     puts "1  -  Main Menu"
     puts "2  -  View Climber Profile"
-    puts "3  -  View All Climbers By Name"
+    puts "3  -  View Mountain Data"
+    puts "4  -  View All Climbers By Name"
     choice = gets.chomp
     if choice == "1"
       main_menu
     elsif choice == "2"
       view_climber_profile
     elsif choice == "3"
+      view_mountain_data
+    elsif choice == "4"
       view_climbers_by_name
     else
       puts "Please Choose A Valid Option"
@@ -257,12 +262,61 @@ class UserActions
     end
   end
 
+  def self.view_mountain_data
+    puts "Please Enter Mounatains Name"
+    choice = gets.chomp
+    found_mountain = Mountain.all.find do |mountain|
+      mountain.name == choice
+    end
+    if found_mountain
+      puts "Name: #{found_mountain.name}"
+      puts "Height: #{found_mountain.height}"
+      puts "Easy Climbing Routes: #{found_mountain.easy_climbs}"
+      puts "Medium Climbing Routes #{found_mountain.medium_climbs}"
+      puts "Hard Climbing Routes #{found_mountain.hard_climbs}"
+      puts ""
+      puts "1  -  Main Menu"
+      puts "2  -  Enter New Mountains name"
+      choice = gets.chomp
+        if choice == "1"
+          main_menu
+        elsif
+          choice =="2"
+          view_mountain_data
+        else
+          main_menu
+        end
+    else
+      puts "Not a Valid Mountain"
+      puts "1  -  Main Menu"
+      puts "2  -  Enter New Mountains name"
+      choice = gets.chomp
+      if choice == "1"
+        main_menu
+      elsif
+        choice =="2"
+        view_mountain_data
+      else
+        main_menu
+      end
+    end
+  end
 
-
-
-
-
-
+  def self.view_mountains_by_name
+    
+    Mountain.all.map do |mountain|
+      puts mountain.name
+    end
+    puts ""
+    puts "1  -  Main Menu"
+    puts "2  -  View Mountain Data"
+    choice = gets.chomp
+    if choice == "1"
+      main_menu
+    elsif choice == "2"
+      view_mountain_data
+    end
+  end
 
 
 
