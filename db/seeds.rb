@@ -1,6 +1,6 @@
+ClimberMountain.destroy_all
 Climber.destroy_all
 Mountain.destroy_all
-ClimberMountain.destroy_all
 Gear.destroy_all
 
 cl1 = Climber.create(name: "John Allen", password: "1234", age: 24, location: "Broomfield", email: "j.allen@gmail.com", phone_number: "720-334-1276")
@@ -17,7 +17,7 @@ mt1 =Mountain.create(name: "Everest", height: 29029, easy_climbs: 38, medium_cli
 
 ClimberMountain.create(climber: cl1, mountain:mt1)
 
-Gear.create(type: "Rope", climber:cl1)
-Gear.create(type: "Quickdraws", climber:cl1)
-Gear.create(type: "Carabiners", climber: cl2)
+Gear.create(name: "Rope", climber:cl1)
+Gear.create(name: "Quickdraws", climber:cl1)
+Gear.create(name: "Carabiners", climber: cl2)
 

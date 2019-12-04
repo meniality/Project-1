@@ -207,25 +207,17 @@ class UserActions
   end
 
   def self.find_climbers_by_gear
-    binding.pry
     puts "What gear are you looking for?"
     gear = gets.chomp
-    list_of_gear = Gear.find_by(type: gear)
+    list_of_gear = []
+    list_of_gear << Gear.find_by(name:gear)
     puts "The following climbers have #{gear}"
     list_of_gear.each do |climber_gear|
-      puts climber_gear.climber.name
+      puts climber_gear.climber
     end  
+    puts "View more? y/n"
+    input = gets.chomp
+    main_menu
   end  
-
-
-
-
-
-
-
-
-
-
-
 
 end
