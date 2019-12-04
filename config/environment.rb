@@ -11,5 +11,5 @@ puts "Welcome to Climbers Paradise!!"
 
 
 # binding.pry
-# UserActions.start_page
+UserActions.start_page
 
