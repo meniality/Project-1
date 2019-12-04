@@ -91,6 +91,7 @@ class UserActions
       main_menu
     end
   end
+  
 
 
   def self.your_profile
@@ -102,7 +103,7 @@ class UserActions
     puts "Phone Number: #{@logged_in_user.phone_number}"
     puts "Mountians Climbed" 
       @logged_in_user.mountains.map do |mountain|
-        puts "   #{mountain.name}"
+        puts "    #{mountain.name}"
       end
     puts ""
     puts "1  -  Back to Main Menu"
@@ -197,6 +198,10 @@ class UserActions
     puts "Location: #{climber_object.location}"
     puts "Email: #{climber_object.email}"
     puts "Phone Number: #{climber_object.phone_number}"
+    puts "Mountains Climbed"
+    climber_object.mountains.map do |mountain|
+      puts "     #{mountain.name}"
+    end
     puts ""
     puts "1  -  Main Menu"
     puts "2  -  View Climber Profile"
@@ -253,7 +258,7 @@ class UserActions
   end
 
 
-a
+
 
 
 
