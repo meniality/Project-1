@@ -10,6 +10,6 @@ puts "Welcome to Climbers Paradise!!"
 
 
 
-binding.pry
-UserActions.start_page
+# binding.pry
+# UserActions.start_page
 
