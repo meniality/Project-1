@@ -212,11 +212,13 @@ class UserActions
     list_of_gear = []
     list_of_gear << Gear.find_by(name:gear)
     puts "The following climbers have #{gear}"
-    list_of_gear.each do |climber_gear|
-      puts climber_gear.climber
+    list_of_gear.each do |info|
+      print "Sick! #{info.name}, have it! Call him at #{info.phone_number} or shoot him an email at #{info.email}."
     end  
+    puts ""
     puts "View more? y/n"
     input = gets.chomp
+    puts ""
     main_menu
   end  
 
