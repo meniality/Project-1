@@ -15,11 +15,11 @@ class UserActions
         UserActions.main_menu
       else 
         puts "Try again" 
-        UserProfile.login
+        UserActions.login
       end  
     else
       puts "Climber does not exist"
-      UserProfile.login
+      UserActions.start_page
     end
   end  
 
@@ -29,7 +29,7 @@ class UserActions
     puts "2  -  create a new account"
     choice = gets.chomp
       if choice == "1" 
-        UserProfile.login
+        UserActions.login
       elsif choice == "2" 
         UserActions.create_account
       else puts "That was not a valid selection. Please choose 1 or 2."
@@ -206,9 +206,6 @@ class UserActions
     end
   end
 
-<<<<<<< HEAD
-  
-=======
   def self.find_climbers_by_gear
     binding.pry
     puts "What gear are you looking for?"
@@ -219,7 +216,6 @@ class UserActions
       puts climber_gear.climber.name
     end  
   end  
->>>>>>> 2e77be7281e8b1b65ae1100de7e0551538fe1c1d
 
 
 
