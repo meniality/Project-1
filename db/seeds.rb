@@ -1,6 +1,7 @@
 ClimberMountain.destroy_all
 ClimberGear.destroy_all
 Gear.destroy_all
+Messages.destroy_all
 Climber.destroy_all
 Mountain.destroy_all
 
@@ -170,3 +171,10 @@ ClimberGear.create(gear: g17, climber: cl5)
 ClimberGear.create(gear: g18, climber: cl6)
 ClimberGear.create(gear: g19, climber: cl7)
 ClimberGear.create(gear: g20, climber: cl8)
+
+Messages.create(message: "This is a test message", sender: cl1, receiver: cl6)
+Messages.create(message: "This is a 2nd test message", sender: cl1, receiver: cl3)
+Messages.create(message: "This is a 3rd test message", sender: cl4, receiver: cl1)
+
+
+

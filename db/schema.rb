@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_211800) do
-
-  create_table "climber_gears", force: :cascade do |t|
-    t.integer "climber_id"
-    t.integer "gear_id"
-    t.index ["climber_id"], name: "index_climber_gears_on_climber_id"
-    t.index ["gear_id"], name: "index_climber_gears_on_gear_id"
-  end
+ActiveRecord::Schema.define(version: 2019_12_05_161935) do
 
   create_table "climber_mountains", force: :cascade do |t|
     t.integer "climber_id"
@@ -37,6 +30,14 @@ ActiveRecord::Schema.define(version: 2019_12_04_211800) do
 
   create_table "gears", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "mountains", force: :cascade do |t|
