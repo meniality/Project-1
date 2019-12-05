@@ -62,8 +62,8 @@ class DirectMessage
   end
 
   def self.sent_messages
-    if $logged_in_user.sent_messages
-      $logged_in_user.sent_messages.map do |message|
+    if $logged_in_user.reload.sent_messages
+      $logged_in_user.reload.sent_messages.map do |message|
         puts "Sent To: #{message.receiver.name}"
         puts message.message
         puts ""
