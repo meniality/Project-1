@@ -221,21 +221,25 @@ class UserActions
     puts ""
     puts "What gear are you looking for?"
     puts ""
-    gear = gets.chomp
-    list_of_gear = []
-    list_of_gear << Gear.find_by(name:gear)
-    puts ""
-    puts "The following climbers have #{gear}"
-    puts ""
-    list_of_gear.map do |gear_info|
-      print "Sick! #{gear_info.climber.name}, have it! Call him at #{gear_info.climber.phone_number} or shoot him an email at #{gear_info.climber.email}"
-      puts ""
-    end  
-    puts ""
-    puts "View more? y/n"
     input = gets.chomp
-    puts ""
-    main_menu
+    Gear.select do |gear|
+      gear.climber == input
+    end  
+    # list_of_gear.each do |x|
+    #   puts climber.name
+    # end  
+    # puts ""
+    # puts "The following climbers have #{gear}"
+    # puts ""
+    # list_of_gear.each do |gear_info|
+    #   #  print "Sick! #{gear_info.climber.name}, have it! Call him at  or shoot him an email at #{gear_info.climber.email}"
+    #   # puts ""
+    # end  
+    # puts ""
+    # puts "View more? y/n"
+    # input = gets.chomp
+    # puts ""
+    # main_menu
   end  
 
   def self.view_climbers_by_location

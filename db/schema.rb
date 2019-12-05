@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_032217) do
+ActiveRecord::Schema.define(version: 2019_12_04_211800) do
+
+  create_table "climber_gears", force: :cascade do |t|
+    t.integer "climber_id"
+    t.integer "gear_id"
+    t.index ["climber_id"], name: "index_climber_gears_on_climber_id"
+    t.index ["gear_id"], name: "index_climber_gears_on_gear_id"
+  end
 
   create_table "climber_mountains", force: :cascade do |t|
     t.integer "climber_id"
@@ -42,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_12_04_032217) do
     t.integer "hard_climbs"
   end
 
+  add_foreign_key "climber_gears", "climbers"
+  add_foreign_key "climber_gears", "gears"
   add_foreign_key "climber_mountains", "climbers"
   add_foreign_key "climber_mountains", "mountains"
   add_foreign_key "gears", "climbers"

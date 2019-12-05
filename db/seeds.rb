@@ -1,7 +1,9 @@
 ClimberMountain.destroy_all
+ClimberGear.destroy_all
 Climber.destroy_all
 Mountain.destroy_all
 Gear.destroy_all
+
 
 cl1 = Climber.create(name: "John Allen", password: "1234", age: 24, location: "Broomfield", email: "j.allen@gmail.com", phone_number: "720-334-1276")
 cl2 = Climber.create(name: "Patrick Hoehn", password: "1234", age: 29, location: "Broomfield", email: "patrh_99@hotmail.com", phone_number: "815-441-4279")
@@ -47,8 +49,11 @@ ClimberMountain.create(climber: cl8, mountain:mt2)
 ClimberMountain.create(climber: cl8, mountain:mt5)
 ClimberMountain.create(climber: cl8, mountain:mt7)
 
-Gear.create(name: "Rope", climber:cl1)
-Gear.create(name: "Quickdraws", climber:cl1)
-Gear.create(name: "Carabiners", climber: cl2)
-Gear.create(name: "Rope", climber: cl2)
+g1 = Gear.create(name: "Rope")
+g2 = Gear.create(name: "Quickdraws")
+g3 = Gear.create(name: "Carabiners")
+g4 = Gear.create(name: "Rope")
 
+ClimberGear.create(gear: g1, climber: cl1)
+ClimberGear.create(gear: g1, climber: cl4)
+ClimberGear.create(gear: g1, climber: cl6)
