@@ -2,7 +2,7 @@ require_all 'lib'
 
 class UserActions
 
-  @logged_in_user = ""
+  $logged_in_user = ""
 
   def self.login
     puts "Enter email"
@@ -12,7 +12,7 @@ class UserActions
       puts "Enter password" 
       password = gets.chomp 
       if password == climber.password
-        @logged_in_user= climber
+        $logged_in_user= climber
         
         UserActions.main_menu
       else 
@@ -61,7 +61,7 @@ class UserActions
     puts "please enter your phone number"
     phone_number = gets.chomp
 
-    @logged_in_user = Climber.create(name: name, password: password1, age: age, location: location, email: email, phone_number: phone_number)
+    $logged_in_user = Climber.create(name: name, password: password1, age: age, location: location, email: email, phone_number: phone_number)
     main_menu
     
   end
@@ -75,7 +75,10 @@ class UserActions
     puts "3  -  View Climbers By Location".red
     puts "4  -  Search Gear".red
     puts "5  -  View Mountains By Name".red
-    puts "6  -  Logout".red
+    puts ""
+    puts "6  -  Message Center".red
+    puts ""
+    puts "7  -  Logout".red
     choice = gets.chomp
     if choice == "1"
       your_profile
@@ -88,7 +91,9 @@ class UserActions
     elsif choice == "5"
       view_mountains_by_name
     elsif choice == "6"
-      @logged_in_user = ""
+      DirectMessage.message_main_menu
+    elsif choice == "7"
+      $logged_in_user = ""
       start_page
     else
       "Please choose a valid option".green
@@ -99,14 +104,14 @@ class UserActions
 
 
   def self.your_profile
-    puts "Name: #{@logged_in_user.name}"
+    puts "Name: #{$logged_in_user.name}"
     puts "Password: ***********"
-    puts "Age: #{@logged_in_user.age}"
-    puts "Location: #{@logged_in_user.location}"
-    puts "Email: #{@logged_in_user.email}"
-    puts "Phone Number: #{@logged_in_user.phone_number}"
+    puts "Age: #{$logged_in_user.age}"
+    puts "Location: #{$logged_in_user.location}"
+    puts "Email: #{$logged_in_user.email}"
+    puts "Phone Number: #{$logged_in_user.phone_number}"
     puts "Mountians Climbed" 
-      @logged_in_user.mountains.map do |mountain|
+      $logged_in_user.mountains.map do |mountain|
         puts "    #{mountain.name}"
       end
     puts ""
@@ -142,7 +147,7 @@ class UserActions
     if choice == "1"
       puts "Please Enter New Name"
       new_info = gets.chomp
-      @logged_in_user.update(name: new_info)
+      $logged_in_user.update(name: new_info)
       update_profile_information
     elsif choice == "2"
       puts ""
@@ -150,22 +155,22 @@ class UserActions
     elsif choice == "3"
       puts "Please Enter New Age"
       new_info = gets.chomp
-      @logged_in_user.update(age: new_info)
+      $logged_in_user.update(age: new_info)
       update_profile_information
     elsif choice == "4"
       puts "Please Enter New Location"
       new_info = gets.chomp
-      @logged_in_user.update(location: new_info)
+      $logged_in_user.update(location: new_info)
       update_profile_information
     elsif choice == "5"
       puts "Please Enter New Email"
       new_info = gets.chomp
-      @logged_in_user.update(Email: new_info)
+      $logged_in_user.update(Email: new_info)
       update_profile_information
     elsif choice == "6"
       puts "Please Enter New Phone Number"
       new_info = gets.chomp
-      @logged_in_user.update(phone_number: new_info)
+      $logged_in_user.update(phone_number: new_info)
       update_profile_information
     elsif choice == "7"
       make_climber_mountain
@@ -184,7 +189,7 @@ class UserActions
       mountain.name == choice
     end
     if found_mountain
-      ClimberMountain.create(climber: @logged_in_user, mountain: found_mountain)
+      ClimberMountain.create(climber: $logged_in_user, mountain: found_mountain)
       update_profile_information
     else
       puts "That Is Not A Real Mountain".green
