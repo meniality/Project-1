@@ -111,7 +111,7 @@ class UserActions
     puts "Email: #{$logged_in_user.email}"
     puts "Phone Number: #{$logged_in_user.phone_number}"
     puts "Mountians Climbed" 
-      $logged_in_user.mountains.map do |mountain|
+      $logged_in_user.reload.mountains.map do |mountain|
         puts "    #{mountain.name}"
       end
     puts ""
