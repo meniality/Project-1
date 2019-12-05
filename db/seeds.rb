@@ -1,7 +1,7 @@
-Climber.destroy_all
-Mountain.destroy_all
 ClimberMountain.destroy_all
 Gear.destroy_all
+Climber.destroy_all
+Mountain.destroy_all
 
 cl1 = Climber.create(name: "John Allen", password: "1234", age: 24, location: "Broomfield", email: "j.allen@gmail.com", phone_number: "720-334-1276")
 cl2 = Climber.create(name: "Patrick Hoehn", password: "1234", age: 29, location: "Broomfield", email: "patrh_99@hotmail.com", phone_number: "815-441-4279")

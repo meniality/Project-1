@@ -28,6 +28,7 @@ class UserActions
 
   def self.start_page 
     puts "Welcome, Climber"
+    puts""
     puts "1  -  login".red
     puts "2  -  create a new account".red
     choice = gets.chomp
@@ -303,7 +304,7 @@ class UserActions
           main_menu
         elsif
           choice =="2"
-          User_actions.view_mountain_data
+          view_mountain_data
         else
           main_menu
         end

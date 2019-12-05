@@ -26,5 +26,5 @@ heredoc
 
 
 # binding.pry
- UserActions.start_page
+UserActions.start_page
 
