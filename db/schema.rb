@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_211800) do
 
   create_table "gears", force: :cascade do |t|
     t.string "name"
-    t.integer "climber_id"
-    t.index ["climber_id"], name: "index_gears_on_climber_id"
   end
 
   create_table "mountains", force: :cascade do |t|
@@ -53,5 +51,4 @@ ActiveRecord::Schema.define(version: 2019_12_04_211800) do
   add_foreign_key "climber_gears", "gears"
   add_foreign_key "climber_mountains", "climbers"
   add_foreign_key "climber_mountains", "mountains"
-  add_foreign_key "gears", "climbers"
 end

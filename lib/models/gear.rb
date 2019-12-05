@@ -1,4 +1,4 @@
 class Gear < ActiveRecord::Base
     has_many :climbers, through: :climber_gears
-    has_many :climber
+    has_many :climber_gears
 end
