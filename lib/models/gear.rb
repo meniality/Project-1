@@ -1,3 +1,4 @@
 class Gear < ActiveRecord::Base
-    belongs_to :climber
+    has_many :climbers, through: :climber_gears
+    has_many :climber_gears
 end
