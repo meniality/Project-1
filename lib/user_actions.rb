@@ -104,12 +104,12 @@ class UserActions
 
 
   def self.your_profile
-    puts "Name: #{$logged_in_user.name}"
+    puts "Name: #{$logged_in_user.reload.name}"
     puts "Password: ***********"
-    puts "Age: #{$logged_in_user.age}"
-    puts "Location: #{$logged_in_user.location}"
-    puts "Email: #{$logged_in_user.email}"
-    puts "Phone Number: #{$logged_in_user.phone_number}"
+    puts "Age: #{$logged_in_user.reload.age}"
+    puts "Location: #{$logged_in_user.reload.location}"
+    puts "Email: #{$logged_in_user.reload.email}"
+    puts "Phone Number: #{$logged_in_user.reload.phone_number}"
     puts "Mountians Climbed" 
       $logged_in_user.reload.mountains.map do |mountain|
         puts "    #{mountain.name}"
@@ -251,27 +251,13 @@ class UserActions
   end
 
   def self.find_climbers_by_gear
-    puts ""
+    binding.pry
     puts "What gear are you looking for?"
-    puts ""
-    input = gets.chomp
-    puts ""
-    gear = Gear.find_by(name: input)
-    gear_with_climber = ClimberGear.all.select do |climber_gear|
-      gear.id == climber_gear.gear_id
-    end
-    x = gear_with_climber.map do |climber_gear|
+    gear = gets.chomp
+    list_of_gear = Gear.find_by(type: gear)
+    puts "The following climbers have #{gear}"
+    list_of_gear.each do |climber_gear|
       puts climber_gear.climber.name
-    end   
-    puts "" 
-    puts "View more? y/n"
-    puts ""
-    input = gets.chomp
-    puts ""
-    if input == "n" 
-      main_menu
-    else input == "y"
-      find_climbers_by_gear  
     end  
   end  
 
