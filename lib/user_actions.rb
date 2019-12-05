@@ -251,15 +251,46 @@ class UserActions
   end
 
   def self.find_climbers_by_gear
-    binding.pry
+    puts ""
     puts "What gear are you looking for?"
-    gear = gets.chomp
-    list_of_gear = Gear.find_by(type: gear)
-    puts "The following climbers have #{gear}"
-    list_of_gear.each do |climber_gear|
+    puts ""
+    input = gets.chomp
+    puts ""
+    gear = Gear.find_by(name: input)
+    if gear
+    gear_with_climber = ClimberGear.all.select do |climber_gear|
+      gear.id == climber_gear.gear_id
+    end
+    else
+    end
+  if gear
+    x = gear_with_climber.map do |climber_gear|
       puts climber_gear.climber.name
+    end   
+    puts "" 
+    puts "View more? y/n"
+    puts ""
+    input = gets.chomp
+    puts ""
+    if input == "n" 
+      main_menu
+    else input == "y"
+      find_climbers_by_gear  
     end  
+  else
+    puts "Gear Not Found".green
+    puts "" 
+    puts "View more? y/n"
+    puts ""
+    input = gets.chomp
+    puts ""
+    if input == "n" 
+      main_menu
+    else input == "y"
+      find_climbers_by_gear 
+    end
   end  
+  end
 
   def self.view_climbers_by_location
     puts "Please enter the city"
