@@ -172,9 +172,9 @@ ClimberGear.create(gear: g18, climber: cl6)
 ClimberGear.create(gear: g19, climber: cl7)
 ClimberGear.create(gear: g20, climber: cl8)
 
-Messages.create(message: "This is a test message", sender: cl1, receiver: cl6)
-Messages.create(message: "This is a 2nd test message", sender: cl1, receiver: cl3)
-Messages.create(message: "This is a 3rd test message", sender: cl4, receiver: cl1)
+Messages.create(message: "What's up? You climb?", sender: cl1, receiver: cl6)
+Messages.create(message: "Hey bud. Did you want to go climbing this weekend? I'll bring the gear!!", sender: cl1, receiver: cl3)
+Messages.create(message: "Stop...Messaging...ME!!!!!!", sender: cl4, receiver: cl1)
 
 
 

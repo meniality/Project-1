@@ -31,11 +31,14 @@ class UserActions
     puts""
     puts "1  -  login".red
     puts "2  -  create a new account".red
+    puts "3  -  exit".red
     choice = gets.chomp
       if choice == "1" 
         UserActions.login
       elsif choice == "2" 
         UserActions.create_account
+      elsif choice == "3"
+        exit
       else puts "That was not a valid selection.".green
       start_page
     end
@@ -73,7 +76,7 @@ class UserActions
     puts "1  -  View Your Profile".red
     puts "2  -  View All Climbers By Name".red
     puts "3  -  View Climbers By Location".red
-    puts "4  -  Search Gear".red
+    puts "4  -  View Climbers By Gear".red
     puts "5  -  View Mountains By Name".red
     puts ""
     puts "6  -  Message Center".red
@@ -219,9 +222,11 @@ class UserActions
   def self.view_climber_profile
     puts"Please Type Full Name Of Climber"
     climber_name = gets.chomp
+    
     climber_object = Climber.all.find do |climber|
       climber.name == climber_name
     end
+    if climber_object
     puts "Name: #{climber_object.name}"
     puts "Age: #{climber_object.age}"
     puts "Location: #{climber_object.location}"
@@ -230,6 +235,9 @@ class UserActions
     puts "Mountains Climbed"
     climber_object.mountains.map do |mountain|
       puts "     #{mountain.name}"
+    end
+    else
+      puts "Not A Valid Climber".green
     end
     puts ""
     puts "1  -  Main Menu".red
