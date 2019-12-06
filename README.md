@@ -4,7 +4,9 @@
 
 Made with love by @altissiana @meniality
 
-[![asciicast](https://asciinema.org/a/GpGWNS6DWfbR6JnVmhDP98h7I.svg)](https://asciinema.org/a/GpGWNS6DWfbR6JnVmhDP98h7I)
+![Alt Text](https://media.giphy.com/media/eJoNR85HABFWGUt6DM/giphy.gif)
+
+
 
 
 
