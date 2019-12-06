@@ -114,7 +114,7 @@ class DirectMessage
       puts "Message Sent"
       message_main_menu
     else
-      puts "That Is Not A Valid Climber"
+      puts "That Is Not A Valid Climber".green
       message_main_menu
     end
   end
